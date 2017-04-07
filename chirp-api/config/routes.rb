@@ -6,9 +6,7 @@ Rails.application.routes.draw do
     root 'api#show'
 
     scope 'api' do
-        scope 'messenger' do
-            get 'verify' => 'api#messenger_webhook_challenge'
-        end
+        get 'messenger' => 'api#messenger_webhook'
 
         get 'getbalance' => 'api#getbalance'
     end

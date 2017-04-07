@@ -9,7 +9,7 @@ class ApiController < ApplicationController
         render :json => result
     end
 
-    def messenger_webhook_challenge
+    def messenger_webhook
         if params["hub.verify_token"] == "c671305a-0fd5-40a5-8859-03dbb9f76d05"
             render :text => params["hub.challenge"]
         else
