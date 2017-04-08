@@ -116,7 +116,7 @@ class MessengerBotController < ActionController::Base
 		@curent.save
                 return context
             }
-        } 
+        }
 
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
@@ -217,3 +217,5 @@ class MessengerBotController < ActionController::Base
             }
         })
     end
+
+end
