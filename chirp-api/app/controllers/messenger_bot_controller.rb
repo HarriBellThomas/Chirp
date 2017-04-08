@@ -13,7 +13,7 @@ class MessengerBotController < ActionController::Base
             @current = do_user_auth(user, text, sender)
 
             if text == "auth"
-                run_auth(text)
+                run_auth(text, sender, @current)
             else
                 response = WitIntegration.incoming(@current, text)
                 sender.reply({ text: "#{response}" })
@@ -76,15 +76,15 @@ class MessengerBotController < ActionController::Base
         end
 
         s = AuthSession.find_by_uuid(c.uuid)
-        run_auth(msg, sender) if s.nil? || s.expires < DateTime.now
+        run_auth(msg, sender, c) if s.nil? || s.expires < DateTime.now
 
         return c
 
     end
 
-    def run_auth(msg, sender)
+    def run_auth(msg, sender, current)
         sender.reply({ text: "We're just going to verify it's you. Please click on the push notification." })
-        send_test_push_notification(@current.uuid, msg)
+        send_test_push_notification(current.uuid, msg)
     end
 
     def first_entity_value(entities, entity)
