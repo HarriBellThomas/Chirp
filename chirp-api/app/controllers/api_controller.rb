@@ -16,6 +16,12 @@ class ApiController < ApplicationController
         c = Conversation.find_by_uuid(params["uuid"])
         sender = Messenger::Bot::Transmitter.new(c.fbid)
         sender.reply({ text: "Thanks for authenticating! Let's see if we can answer your question." })
+        sender.reply({"attachment":{
+            "type":"image",
+            "payload":{
+                "url":"http://media.giphy.com/media/qHho9D3nk3nS8/giphy.gif"
+            }
+        }})
 
         s = AuthSession.find_by_uuid(c.uuid)
         if s.nil?

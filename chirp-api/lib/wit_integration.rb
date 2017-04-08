@@ -123,9 +123,9 @@ class WitIntegration
 
 
         client = Wit.new(access_token: "FXLDTGT5HV5FGZX3VO2DEZXRH4B3K2NA", actions: actions)
-        rsp = client.converse(current.fbid, msg, current.context)
+        rsp = client.run_actions(current.fbid, msg, current.context)
         Rails.logger.warn(rsp.inspect)
-        return rsp['msg']
+        return rsp
 
     end
 
