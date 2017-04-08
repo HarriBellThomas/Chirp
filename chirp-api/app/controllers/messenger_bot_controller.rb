@@ -1,41 +1,61 @@
+require 'Date'
+require 'starling'
+
 class MessengerBotController < ActionController::Base
     def message(event, sender)
         # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
 
-        actions = {
+       actions = {
             send: -> (request, response) {
                 puts("sending... #{response['text']}")
             },
+	    getBalance: -> (request) {
+		context = {}
+                entities = request['entities']
+
+		context['balance'] = Starling.getBalance(@current.fbid)
+		@current.context = context
+		@current.save
+		return context
+	    },
             transfer: -> (request) {
-                context = request['context']
+                context = {}
                 entities = request['entities']
 
                 contact = first_entity_value(entities, 'contact')
                 amount_of_money = first_entity_value(entities, 'amount_of_money')
 
                 if contact and amount_of_money
-                    # TODO: Actually implement
-                    context['response'] = 'Success!'
-                    context.delete('missingContact')
-                    context.delete('missingAmount')
-                    context.delete('missingBoth')
+
+		    id = Starling.check_contact(@current.fbid, contact)
+		    if id
+			Starling.transfer(@current.fbid, amount_of_money, id)
+			context['response'] = 'Transferred'+amount_of_money+'to'+contact
+		    else
+                        context['notValidContact'] = true
+		    end
+                    #context.delete('missingContact')
+                    #context.delete('missingAmount')
+                    #context.delete('missingBoth')
                 elsif contact and amount_of_money.nil?
                     context['missingAmount'] = true
-                    context.delete('response')
-                    context.delete('missingContact')
-                    context.delete('missingBoth')
+                    #context.delete('response')
+                    #context.delete('missingContact')
+                    #context.delete('missingBoth')
                 elsif amount_of_money and contact.nil?
                     context['missingContact'] = true
-                    context.delete('response')
-                    context.delete('missingAmount')
-                    context.delete('missingBoth')
+                    #context.delete('response')
+                    #context.delete('missingAmount')
+                    #context.delete('missingBoth')
                 else
                     context['missingBoth'] = true
-                    context.delete('response')
-                    context.delete('missingContact')
-                    context.delete('missingAmount')
+                    #context.delete('response')
+                    #context.delete('missingContact')
+                    #context.delete('missingAmount')
                 end
 
+		@current.context = context
+		@current.save
                 return context
             },
             request: -> (request) {
@@ -48,49 +68,55 @@ class MessengerBotController < ActionController::Base
                 if contact and amount_of_money
                     # TODO: Actually implement
                     context['response'] = 'Success!'
-                    context.delete('missingContact')
-                    context.delete('missingAmount')
-                    context.delete('missingBoth')
+                    #context.delete('missingContact')
+                    #context.delete('missingAmount')
+                    #context.delete('missingBoth')
                 elsif contact and amount_of_money.nil?
                     context['missingAmount'] = true
-                    context.delete('response')
-                    context.delete('missingContact')
-                    context.delete('missingBoth')
+                    #context.delete('response')
+                    #context.delete('missingContact')
+                    #context.delete('missingBoth')
                 elsif amount_of_money and contact.nil?
                     context['missingContact'] = true
-                    context.delete('response')
-                    context.delete('missingAmount')
-                    context.delete('missingBoth')
+                    #context.delete('response')
+                    #context.delete('missingAmount')
+                    #context.delete('missingBoth')
                 else
                     context['missingBoth'] = true
-                    context.delete('response')
-                    context.delete('missingContact')
-                    context.delete('missingAmount')
+                    #context.delete('response')
+                    #context.delete('missingContact')
+                    #context.delete('missingAmount')
                 end
 
+		@current.context = context
+		@current.save
                 return context
             },
             getSpending: -> (request) {
-                context = request['context']
+                context = {}
                 entities = request['entities']
 
                 datetime = first_entity_value(entities, 'datetime')
 
                 if datetime
-                    # TODO: actually implement
-                    context['amount'] = "£5000000000"
-                    context['niceDate'] = "June a few years ago"
-                    context.delete('missingDatetime')
+		    d = Date.parse(datetime)
+		    simple_date = d.strftime('%Y-%m-%d')
+		    response = Starling.spending(@current.fbid, simple_date)
+		    amount = 0 #Do something to calculate this!
+                    context['amount'] = amount
+                    context['niceDate'] = d.strftime('%d %b %y')
+                    #context.delete('missingDatetime')
                 else
                     context['missingDatetime'] = true
-                    context.delete('amount')
-                    context.delete('niceDate')
+                    #context.delete('amount')
+                    #context.delete('niceDate')
                 end
 
+		@current.context = context
+		@curent.save
                 return context
-            },
-        }
-
+            }
+        } 
 
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
