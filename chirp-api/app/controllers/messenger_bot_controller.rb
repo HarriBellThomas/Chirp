@@ -91,20 +91,21 @@ class MessengerBotController < ActionController::Base
             },
         }
 
-        client = Wit.new(access_token: ENV["WIT_ACCESS_TOKEN"], actions: actions)
 
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
-            puts text
+            user = "#{event['sender']['id']}"
+            @current = do_user_auth(user)
 
             if text == "auth"
-                puts event.inspect
+
                 sender.reply({ text: "We're just going to verify it's you. Please click on the push notification." })
-                send_test_push_notification(event['sender']['id'])
+                send_test_push_notification(@current.fbid)
 
             else
 
-                rsp = client.message(text)
+                client = Wit.new(access_token: "FXLDTGT5HV5FGZX3VO2DEZXRH4B3K2NA", actions: actions)
+                rsp = client.converse(@current.fbid, text, @current.context)
                 sender.reply({ text: "#{rsp}" })
 
             end
@@ -297,11 +298,11 @@ class MessengerBotController < ActionController::Base
         APNS.port = 2195
         # this is also the default. Shouldn't ever have to set this, but just in case Apple goes crazy, you can.
 
-        device_token = 'EDCFE738332C69FB185B4EF7B4B6DD7EE9A817B30DF2FE7787A2BCB02B242A97'
+        device_token = '12BF613DFAB7F8E763831FBFCFE3E339F518FB38CAD76ABADAB7D2BAC6F0D3E1'
 
         APNS.send_notification(
         device_token,
-        :alert => 'Hello iPhone!',
+        :alert => 'Tap here to start a Chirp session.',
         :badge => 1,
         :sound => 'default',
         :other => {
@@ -310,6 +311,20 @@ class MessengerBotController < ActionController::Base
             }
         }
         )
+    end
+
+    def do_user_auth(fbid)
+
+        c = Conversation.find_by_fbid(fbid)
+        if c.nil?
+            c = Conversation.new
+            c.uuid = SecureRandom.uuid
+            c.fbid = fbid
+            c.save
+        end
+
+        return c
+
     end
 
     def first_entity_value(entities, entity)
