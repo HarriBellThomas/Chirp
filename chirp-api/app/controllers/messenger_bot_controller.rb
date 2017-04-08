@@ -1,4 +1,4 @@
-require 'Date'
+require 'date'
 require 'starling'
 
 class MessengerBotController < ActionController::Base

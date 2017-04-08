@@ -53,3 +53,4 @@ gem 'messenger-bot', :git => 'git://github.com/jun85664396/messenger-bot-rails.g
 gem 'wit'
 gem 'apns', :git => 'git://github.com/jpoz/APNS.git'
 gem 'rest-client'
+gem 'json'

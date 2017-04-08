@@ -179,6 +179,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  json
   messenger-bot!
   rails (= 4.2.5)
   rest-client
@@ -191,3 +192,6 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
   wit
+
+BUNDLED WITH
+   1.14.6
