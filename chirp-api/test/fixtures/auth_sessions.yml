@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  expires: 2017-04-08 15:37:58
+
+two:
+  uuid: MyString
+  expires: 2017-04-08 15:37:58
