@@ -15,13 +15,15 @@ class ApiController < ApplicationController
     def push_return
         c = Conversation.find_by_uuid(params["uuid"])
         sender = Messenger::Bot::Transmitter.new(c.fbid)
-        sender.reply({ text: "Thanks for authenticating! Let's see if we can answer your question." })
+        sender.reply({"sender_action":"typing_on"})
         sender.reply({"attachment":{
             "type":"image",
             "payload":{
                 "url":"http://media.giphy.com/media/qHho9D3nk3nS8/giphy.gif"
             }
         }})
+        sender.reply({ text: "Thanks for authenticating! Let's see if we can answer your question." })
+        sender.reply({"sender_action":"typing_off"})
 
         s = AuthSession.find_by_uuid(c.uuid)
         if s.nil?

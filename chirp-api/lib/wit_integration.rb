@@ -11,12 +11,12 @@ class WitIntegration
             send: -> (request, response) {
                 puts("sending... #{response['text']}")
             },
-            getBalance: -> (request) {
-                context = {}
+            getBalance: -> (request, response) {
+                context = { :context => request.inspect, :reply => response }
                 entities = request['entities']
 
     	        Rails.logger.warn('fbid in action: ' + current.fbid)
-                context['balance'] = Starling.getBalance(current.fbid)
+                context['balance'] = Starling.balance(current.fbid)
                 current.context = context
                 current.save
                 return context
