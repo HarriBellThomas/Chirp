@@ -11,8 +11,8 @@ Rails.application.routes.draw do
         get 'getbalance' => 'api#getbalance'
     end
 
-    mount Facebook::Messenger::Server, at: 'bot'
-
+    mount Messenger::Bot::Space => "/webhook"
+    
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'
 
