@@ -2,100 +2,100 @@ class MessengerBotController < ActionController::Base
     def message(event, sender)
         # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
 
-       actions = {
-  send: -> (request, response) {
-    puts("sending... #{response['text']}")
-  },
-  transfer: -> (request) {
-    context = request['context']
-    entities = request['entities']
+        actions = {
+            send: -> (request, response) {
+                puts("sending... #{response['text']}")
+            },
+            transfer: -> (request) {
+                context = request['context']
+                entities = request['entities']
 
-    contact = first_entity_value(entities, 'contact')
-    amount_of_money = first_entity_value(entities, 'amount_of_money')
+                contact = first_entity_value(entities, 'contact')
+                amount_of_money = first_entity_value(entities, 'amount_of_money')
 
-    if contact and amount_of_money
-	# TODO: Actually implement
-        context['response'] = 'Success!'
-	context.delete('missingContact')
-	context.delete('missingAmount')
-        context.delete('missingBoth')
-    elsif contact and amount_of_money.nil?
-        context['missingAmount'] = true
-	context.delete('response')
-	context.delete('missingContact')
-	context.delete('missingBoth')
-    elsif amount_of_money and contact.nil?
-	context['missingContact'] = true
-	context.delete('response')
-	context.delete('missingAmount')
-        context.delete('missingBoth')
-    else
-        context['missingBoth'] = true
-	context.delete('response')
-        context.delete('missingContact')
-	context.delete('missingAmount')
-    end
+                if contact and amount_of_money
+                    # TODO: Actually implement
+                    context['response'] = 'Success!'
+                    context.delete('missingContact')
+                    context.delete('missingAmount')
+                    context.delete('missingBoth')
+                elsif contact and amount_of_money.nil?
+                    context['missingAmount'] = true
+                    context.delete('response')
+                    context.delete('missingContact')
+                    context.delete('missingBoth')
+                elsif amount_of_money and contact.nil?
+                    context['missingContact'] = true
+                    context.delete('response')
+                    context.delete('missingAmount')
+                    context.delete('missingBoth')
+                else
+                    context['missingBoth'] = true
+                    context.delete('response')
+                    context.delete('missingContact')
+                    context.delete('missingAmount')
+                end
 
-    return context
-  },
-  request: -> (request) {
-    context = request['context']
-    entities = request['entities']
+                return context
+            },
+            request: -> (request) {
+                context = request['context']
+                entities = request['entities']
 
-    contact = first_entity_value(entities, 'contact')
-    amount_of_money = first_entity_value(entities, 'amount_of_money')
+                contact = first_entity_value(entities, 'contact')
+                amount_of_money = first_entity_value(entities, 'amount_of_money')
 
-    if contact and amount_of_money
-	# TODO: Actually implement
-        context['response'] = 'Success!'
-	context.delete('missingContact')
-	context.delete('missingAmount')
-        context.delete('missingBoth')
-    elsif contact and amount_of_money.nil?
-        context['missingAmount'] = true
-	context.delete('response')
-	context.delete('missingContact')
-	context.delete('missingBoth')
-    elsif amount_of_money and contact.nil?
-	context['missingContact'] = true
-	context.delete('response')
-	context.delete('missingAmount')
-        context.delete('missingBoth')
-    else
-        context['missingBoth'] = true
-	context.delete('response')
-        context.delete('missingContact')
-	context.delete('missingAmount')
-    end
+                if contact and amount_of_money
+                    # TODO: Actually implement
+                    context['response'] = 'Success!'
+                    context.delete('missingContact')
+                    context.delete('missingAmount')
+                    context.delete('missingBoth')
+                elsif contact and amount_of_money.nil?
+                    context['missingAmount'] = true
+                    context.delete('response')
+                    context.delete('missingContact')
+                    context.delete('missingBoth')
+                elsif amount_of_money and contact.nil?
+                    context['missingContact'] = true
+                    context.delete('response')
+                    context.delete('missingAmount')
+                    context.delete('missingBoth')
+                else
+                    context['missingBoth'] = true
+                    context.delete('response')
+                    context.delete('missingContact')
+                    context.delete('missingAmount')
+                end
 
-    return context
-  },
-  getSpending: -> (request) {
-    context = request['context']
-    entities = request['entities']
+                return context
+            },
+            getSpending: -> (request) {
+                context = request['context']
+                entities = request['entities']
 
-    datetime = first_entity_value(entities, 'datetime')
+                datetime = first_entity_value(entities, 'datetime')
 
-    if datetime
-	# TODO: actually implement
-        context['amount'] = "£5000000000"
-	context['niceDate'] = "June a few years ago"
-	context.delete('missingDatetime')
-    else
-	context['missingDatetime'] = true
-	context.delete('amount')
-	context.delete('niceDate')
-    end
+                if datetime
+                    # TODO: actually implement
+                    context['amount'] = "£5000000000"
+                    context['niceDate'] = "June a few years ago"
+                    context.delete('missingDatetime')
+                else
+                    context['missingDatetime'] = true
+                    context.delete('amount')
+                    context.delete('niceDate')
+                end
 
-    return context
-  },
-} 
+                return context
+            },
+        }
 
         client = Wit.new(access_token: ENV["WIT_ACCESS_TOKEN"], actions: actions)
 
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
-            puts text
+            puts /api/push_return
 
             if text == "auth"
                 puts event.inspect
@@ -104,9 +104,9 @@ class MessengerBotController < ActionController::Base
 
             else
 
-                sender.reply({ text: "Not nil!" })
-                sender.reply({ text: text })
-                #     rsp = client.message("#{event['message']['text']}")
+                rsp = client.message(text)
+                sender.reply({ text: "#{rsp}" })
+
             end
         else
             sender.reply({ text: "The event text is nil. Reply: #{event['message']['text']}" })
@@ -300,22 +300,22 @@ class MessengerBotController < ActionController::Base
         device_token = 'EDCFE738332C69FB185B4EF7B4B6DD7EE9A817B30DF2FE7787A2BCB02B242A97'
 
         APNS.send_notification(
-            device_token,
-            :alert => 'Hello iPhone!',
-            :badge => 1,
-            :sound => 'default',
-            :other => {
-                :chirp => {
-                    :fbid => "#{id}"
-                }
+        device_token,
+        :alert => 'Hello iPhone!',
+        :badge => 1,
+        :sound => 'default',
+        :other => {
+            :chirp => {
+                :fbid => "#{id}"
             }
+        }
         )
     end
 
     def first_entity_value(entities, entity)
-  return nil unless entities.has_key? entity
-  val = entities[entity][0]['value']
-  return nil if val.nil?
-  return val.is_a?(Hash) ? val['value'] : val
-end
+        return nil unless entities.has_key? entity
+        val = entities[entity][0]['value']
+        return nil if val.nil?
+        return val.is_a?(Hash) ? val['value'] : val
+    end
 end
