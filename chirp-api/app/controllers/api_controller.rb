@@ -1,4 +1,7 @@
 class ApiController < ApplicationController
+
+    skip_before_action :verify_authenticity_token, only: [:push_return]
+
     def show
     end
 
