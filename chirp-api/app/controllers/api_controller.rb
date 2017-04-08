@@ -23,7 +23,7 @@ class ApiController < ApplicationController
             s.uuid = c.uuid
         end
 
-        s.expires = DateTime.parse(Time.now + 10*60)
+        s.expires = DateTime.parse((Time.now + 10*60).to_s)
         s.save
 
 
