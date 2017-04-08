@@ -95,7 +95,7 @@ class MessengerBotController < ActionController::Base
 
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
-            puts /api/push_return
+            puts text
 
             if text == "auth"
                 puts event.inspect
