@@ -13,9 +13,14 @@ class ApiController < ApplicationController
     end
 
     def push_return
-        sender = Messenger::Bot::Transmitter.new(params["fbid"])
-        sender.reply({ text: "Hello, again!" })
-        puts sender.get_profile
+        c = Conversation.find_by_uuid(params["uuid"])
+        sender = Messenger::Bot::Transmitter.new(c.fbid)
+        sender.reply({ text: "Thanks for authenticating! Let's see if we can answer your question." })
+
+        response = WitIntegration.incoming(c, params["msg"])
+        sender.reply({ text: "#{response}" })
+
+        #puts sender.get_profile
         render :json => {:status => "success"}
     end
 end
