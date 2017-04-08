@@ -6,11 +6,12 @@ Rails.application.routes.draw do
     root 'api#show'
 
     scope 'api' do
-        get 'messenger' => 'api#messenger_webhook'
+        #get 'messenger' => 'api#messenger_webhook'
 
         get 'getbalance' => 'api#getbalance'
     end
 
+    mount Facebook::Messenger::Server, at: 'bot'
 
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'
