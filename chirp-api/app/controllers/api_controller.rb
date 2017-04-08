@@ -16,5 +16,6 @@ class ApiController < ApplicationController
         sender = Messenger::Bot::Transmitter.new(params["fbid"])
         sender.reply({ text: "Hello, again!" })
         puts sender.get_profile
+        render :json => {:status => "success"}
     end
 end
