@@ -1,7 +1,7 @@
 require 'date'
 require 'json'
 require 'starling'
-require 'wit'
+require 'wit_integration'
 
 class WitIntegration
 

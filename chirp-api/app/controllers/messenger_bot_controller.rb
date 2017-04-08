@@ -1,7 +1,7 @@
 require 'date'
 require 'starling'
 require 'json'
-require 'wit'
+require 'wit_integration'
 
 class MessengerBotController < ActionController::Base
     def message(event, sender)
