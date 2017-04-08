@@ -11,8 +11,8 @@ class WitIntegration
             send: -> (request, response) {
                 puts("sending... #{response['text']}")
             },
-            getBalance: -> (request, response) {
-                context = { :context => request.inspect, :reply => response }
+            getBalance: -> (request) {
+                context = {}
                 entities = request['entities']
 
     	        Rails.logger.warn('fbid in action: ' + current.fbid)
