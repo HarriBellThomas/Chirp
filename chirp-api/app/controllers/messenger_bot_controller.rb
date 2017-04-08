@@ -132,13 +132,11 @@ class MessengerBotController < ActionController::Base
 
                 client = Wit.new(access_token: "FXLDTGT5HV5FGZX3VO2DEZXRH4B3K2NA", actions: actions)
                 rsp = client.converse(@current.fbid, text, @current.context)
-                #sender.reply({ text: "#{rsp['msg']}" })
-                text_reply("#{rsp['msg']}", sender)
+                sender.reply({ text: "#{rsp['msg']}" })
 
             end
         else
-            text_reply("The event text is nil. Reply: #{event['message']['text']}", sender)
-            #sender.reply({ text: "The event text is nil. Reply: #{event['message']['text']}" })
+            sender.reply({ text: "The event text is nil. Reply: #{event['message']['text']}" })
         end
 
 
@@ -170,15 +168,15 @@ class MessengerBotController < ActionController::Base
         device_token = '12BF613DFAB7F8E763831FBFCFE3E339F518FB38CAD76ABADAB7D2BAC6F0D3E1'
 
         APNS.send_notification(
-        device_token,
-        :alert => 'Tap here to start a Chirp session.',
-        :badge => 1,
-        :sound => 'default',
-        :other => {
-            :chirp => {
-                :fbid => "#{id}"
+            device_token,
+            :alert => 'Tap here to start a Chirp session.',
+            :badge => 1,
+            :sound => 'default',
+            :other => {
+                :chirp => {
+                    :fbid => "#{id}"
+                }
             }
-        }
         )
     end
 
@@ -203,19 +201,6 @@ class MessengerBotController < ActionController::Base
         return val.is_a?(Hash) ? val['value'] : val
     end
 
-    def text_reply(txt, sender)
-        sender.reply({ text: txt })
-    end
 
-    def image_reply(url, sender)
-        sender.reply({
-            "attachment":{
-                "type":"image",
-                "payload":{
-                    "url": url
-                }
-            }
-            })
-        end
 
-    end
+end
