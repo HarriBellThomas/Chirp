@@ -50,3 +50,4 @@ end
 
 
 gem 'messenger-bot', :git => 'git://github.com/jun85664396/messenger-bot-rails.git'
+gem 'wit'
