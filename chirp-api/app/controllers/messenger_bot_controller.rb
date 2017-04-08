@@ -2,14 +2,94 @@ class MessengerBotController < ActionController::Base
     def message(event, sender)
         # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
 
-        actions = {
-            send: -> (request, response) {
-                puts("sending... #{response['text']}")
-            },
-            my_action: -> (request) {
-                return request['context']
-            },
-        }
+       actions = {
+  send: -> (request, response) {
+    puts("sending... #{response['text']}")
+  },
+  transfer: -> (request) {
+    context = request['context']
+    entities = request['entities']
+
+    contact = first_entity_value(entities, 'contact')
+    amount_of_money = first_entity_value(entities, 'amount_of_money')
+
+    if contact and amount_of_money
+	# TODO: Actually implement
+        context['response'] = 'Success!'
+	context.delete('missingContact')
+	context.delete('missingAmount')
+        context.delete('missingBoth')
+    elsif contact and amount_of_money.nil?
+        context['missingAmount'] = true
+	context.delete('response')
+	context.delete('missingContact')
+	context.delete('missingBoth')
+    elsif amount_of_money and contact.nil?
+	context['missingContact'] = true
+	context.delete('response')
+	context.delete('missingAmount')
+        context.delete('missingBoth')
+    else
+        context['missingBoth'] = true
+	context.delete('response')
+        context.delete('missingContact')
+	context.delete('missingAmount')
+    end
+
+    return context
+  },
+  request: -> (request) {
+    context = request['context']
+    entities = request['entities']
+
+    contact = first_entity_value(entities, 'contact')
+    amount_of_money = first_entity_value(entities, 'amount_of_money')
+
+    if contact and amount_of_money
+	# TODO: Actually implement
+        context['response'] = 'Success!'
+	context.delete('missingContact')
+	context.delete('missingAmount')
+        context.delete('missingBoth')
+    elsif contact and amount_of_money.nil?
+        context['missingAmount'] = true
+	context.delete('response')
+	context.delete('missingContact')
+	context.delete('missingBoth')
+    elsif amount_of_money and contact.nil?
+	context['missingContact'] = true
+	context.delete('response')
+	context.delete('missingAmount')
+        context.delete('missingBoth')
+    else
+        context['missingBoth'] = true
+	context.delete('response')
+        context.delete('missingContact')
+	context.delete('missingAmount')
+    end
+
+    return context
+  },
+  getSpending: -> (request) {
+    context = request['context']
+    entities = request['entities']
+
+    datetime = first_entity_value(entities, 'datetime')
+
+    if datetime
+	# TODO: actually implement
+        context['amount'] = "£5000000000"
+	context['niceDate'] = "June a few years ago"
+	context.delete('missingDatetime')
+    else
+	context['missingDatetime'] = true
+	context.delete('amount')
+	context.delete('niceDate')
+    end
+
+    return context
+  },
+} 
 
         client = Wit.new(access_token: ENV["WIT_ACCESS_TOKEN"], actions: actions)
 
@@ -231,4 +311,11 @@ class MessengerBotController < ActionController::Base
             }
         )
     end
+
+    def first_entity_value(entities, entity)
+  return nil unless entities.has_key? entity
+  val = entities[entity][0]['value']
+  return nil if val.nil?
+  return val.is_a?(Hash) ? val['value'] : val
+end
 end
