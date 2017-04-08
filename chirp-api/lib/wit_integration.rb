@@ -15,7 +15,7 @@ class WitIntegration
                 context = {}
                 entities = request['entities']
 
-    	        logger.warn('fbid in action: ' + current.fbid)
+    	        Rails.logger.warn('fbid in action: ' + current.fbid)
                 context['balance'] = Starling.getBalance(current.fbid)
                 current.context = context
                 current.save
@@ -124,7 +124,7 @@ class WitIntegration
 
         client = Wit.new(access_token: "FXLDTGT5HV5FGZX3VO2DEZXRH4B3K2NA", actions: actions)
         rsp = client.converse(current.fbid, msg, current.context)
-        logger.warn(rsp.inspect)
+        Rails.logger.warn(rsp.inspect)
         return rsp['msg']
 
     end
