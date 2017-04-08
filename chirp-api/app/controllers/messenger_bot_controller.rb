@@ -13,11 +13,16 @@ class MessengerBotController < ActionController::Base
 
     client = Wit.new(access_token: ENV["WIT_ACCESS_TOKEN"], actions: actions)
 
-    rsp = client.message(event['message']['text'])
-    puts("Yay, got Wit.ai response: #{rsp}")
+    if !event['message']['text'].nil?
+        rsp = client.message(event['message']['text'])
+        puts("Yay, got Wit.ai response: #{rsp}")
 
 
-    sender.reply({ text: "Yay, got Wit.ai response: #{rsp}" })
+        sender.reply({ text: "Yay, got Wit.ai response: #{rsp}" })
+    else
+        sender.reply({ text: "Blank format" })
+    end
+
   end
 
   def delivery(event, sender)
