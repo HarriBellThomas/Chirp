@@ -5,19 +5,19 @@ class MessengerBotController < ActionController::Base
     def message(event, sender)
         # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
 
-       actions = {
+        actions = {
             send: -> (request, response) {
                 puts("sending... #{response['text']}")
             },
-	    getBalance: -> (request) {
-		context = {}
+            getBalance: -> (request) {
+                context = {}
                 entities = request['entities']
 
-		context['balance'] = Starling.getBalance(@current.fbid)
-		@current.context = context
-		@current.save
-		return context
-	    },
+                context['balance'] = Starling.getBalance(@current.fbid)
+                @current.context = context
+                @current.save
+                return context
+            },
             transfer: -> (request) {
                 context = {}
                 entities = request['entities']
@@ -27,13 +27,13 @@ class MessengerBotController < ActionController::Base
 
                 if contact and amount_of_money
 
-		    id = Starling.check_contact(@current.fbid, contact)
-		    if id
-			Starling.transfer(@current.fbid, amount_of_money, id)
-			context['response'] = 'Transferred'+amount_of_money+'to'+contact
-		    else
+                    id = Starling.check_contact(@current.fbid, contact)
+                    if id
+                        Starling.transfer(@current.fbid, amount_of_money, id)
+                        context['response'] = 'Transferred'+amount_of_money+'to'+contact
+                    else
                         context['notValidContact'] = true
-		    end
+                    end
                     #context.delete('missingContact')
                     #context.delete('missingAmount')
                     #context.delete('missingBoth')
@@ -54,8 +54,8 @@ class MessengerBotController < ActionController::Base
                     #context.delete('missingAmount')
                 end
 
-		@current.context = context
-		@current.save
+                @current.context = context
+                @current.save
                 return context
             },
             request: -> (request) {
@@ -88,8 +88,8 @@ class MessengerBotController < ActionController::Base
                     #context.delete('missingAmount')
                 end
 
-		@current.context = context
-		@current.save
+                @current.context = context
+                @current.save
                 return context
             },
             getSpending: -> (request) {
@@ -99,10 +99,10 @@ class MessengerBotController < ActionController::Base
                 datetime = first_entity_value(entities, 'datetime')
 
                 if datetime
-		    d = Date.parse(datetime)
-		    simple_date = d.strftime('%Y-%m-%d')
-		    response = Starling.spending(@current.fbid, simple_date)
-		    amount = 0 #Do something to calculate this!
+                    d = Date.parse(datetime)
+                    simple_date = d.strftime('%Y-%m-%d')
+                    response = Starling.spending(@current.fbid, simple_date)
+                    amount = 0 #Do something to calculate this!
                     context['amount'] = amount
                     context['niceDate'] = d.strftime('%d %b %y')
                     #context.delete('missingDatetime')
@@ -112,8 +112,8 @@ class MessengerBotController < ActionController::Base
                     #context.delete('niceDate')
                 end
 
-		@current.context = context
-		@curent.save
+                @current.context = context
+                @curent.save
                 return context
             }
         }
@@ -170,15 +170,15 @@ class MessengerBotController < ActionController::Base
         device_token = '12BF613DFAB7F8E763831FBFCFE3E339F518FB38CAD76ABADAB7D2BAC6F0D3E1'
 
         APNS.send_notification(
-            device_token,
-            :alert => 'Tap here to start a Chirp session.',
-            :badge => 1,
-            :sound => 'default',
-            :other => {
-                :chirp => {
-                    :fbid => "#{id}"
-                }
+        device_token,
+        :alert => 'Tap here to start a Chirp session.',
+        :badge => 1,
+        :sound => 'default',
+        :other => {
+            :chirp => {
+                :fbid => "#{id}"
             }
+        }
         )
     end
 
@@ -215,7 +215,7 @@ class MessengerBotController < ActionController::Base
                     "url": url
                 }
             }
-        })
-    end
+            })
+        end
 
-end
+    end
