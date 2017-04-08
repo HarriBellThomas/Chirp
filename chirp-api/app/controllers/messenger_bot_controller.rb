@@ -13,6 +13,7 @@ class MessengerBotController < ActionController::Base
                 context = {}
                 entities = request['entities']
 
+		Logger.warn('fbid in action: '+@current.fbid)
                 context['balance'] = Starling.getBalance(@current.fbid)
                 @current.context = context
                 @current.save

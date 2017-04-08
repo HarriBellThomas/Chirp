@@ -5,7 +5,9 @@ class Starling
 	def self.balance(fbid)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
+		Logger.warn('access_token in starling: '+access_token)
 		response = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/accounts/balance', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
+		Logger.warn('balance response: '+response.inspect)
 		return response['availableToSpend']
 	end
 
