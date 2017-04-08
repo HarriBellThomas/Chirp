@@ -19,7 +19,7 @@ class MessengerBotController < ActionController::Base
 
             if text == "auth"
                 puts event.inspect
-                sender.reply({ text: "We're just going to verify it's you. please click on the push notification." })
+                sender.reply({ text: "We're just going to verify it's you. Please click on the push notification." })
                 send_test_push_notification("asdasd")
 
             else
@@ -219,6 +219,16 @@ class MessengerBotController < ActionController::Base
 
         device_token = 'EDCFE738332C69FB185B4EF7B4B6DD7EE9A817B30DF2FE7787A2BCB02B242A97'
 
-        APNS.send_notification(device_token, :alert => 'Hello iPhone!', :badge => 1, :sound => 'default', :other => {:chirp => {:fbid => "#{id}"}}}))
+        APNS.send_notification(
+            device_token,
+            :alert => 'Hello iPhone!',
+            :badge => 1,
+            :sound => 'default',
+            :other => {
+                :chirp => {
+                    :fbid => "#{id}"
+                }
+            }
+        )
     end
 end
