@@ -12,20 +12,36 @@ class MessengerBotController < ActionController::Base
     }
 
     client = Wit.new(access_token: ENV["WIT_ACCESS_TOKEN"], actions: actions)
-    text = "#{event['message']['text']}"
-    puts text
 
-    if !event['message']['text'].nil?
-        rsp = client.message("#{event['message']['text']}")
-        puts("Yay, got Wit.ai response: #{rsp}")
+    unless event['message']['text'].nil?
+        text = "#{event['message']['text']}"
+        puts text
+        sender.reply({ text: "Not nil!" })
+        #     rsp = client.message("#{event['message']['text']}")
 
-
-        sender.reply({ text: "Yay, got Wit.ai response: #{rsp}" })
     else
-        sender.reply({ text: "Blank format" })
+        sender.reply({ text: "The event text is nil. Reply: #{event['message']['text']}" })
     end
 
-    sender.reply({ text: "Reply: #{event['message']['text']}" })
+    sender.reply({
+    "attachment":{
+      "type":"image",
+      "payload":{
+        "url":"https://github.com/apple-touch-icon.png"
+      }
+    }
+  })
+
+    # if !event['message']['text'].nil?
+    #     puts("Yay, got Wit.ai response: #{rsp}")
+    #
+    #
+    #     sender.reply({ text: "Yay, got Wit.ai response: #{rsp}" })
+    # else
+    #     sender.reply({ text: "Blank format" })
+    # end
+
+    #sender.reply({ text: "Reply: #{event['message']['text']}" })
   end
 
   def delivery(event, sender)
