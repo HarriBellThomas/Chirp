@@ -10,7 +10,7 @@ class MessengerBotController < ActionController::Base
         unless event['message']['text'].nil?
             text = "#{event['message']['text']}"
             user = "#{event['sender']['id']}"
-            @current = do_user_auth(user, text)
+            @current = do_user_auth(user, text, sender)
 
             if text == "auth"
                 run_auth(text)
@@ -65,7 +65,7 @@ class MessengerBotController < ActionController::Base
         )
     end
 
-    def do_user_auth(fbid, msg)
+    def do_user_auth(fbid, msg, sender)
 
         c = Conversation.find_by_fbid(fbid)
         if c.nil?
