@@ -123,7 +123,7 @@ class WitIntegration
 
 
         client = Wit.new(access_token: "FXLDTGT5HV5FGZX3VO2DEZXRH4B3K2NA", actions: actions)
-        rsp = client.converse(current.fbid, text, current.context)
+        rsp = client.converse(current.fbid, msg, current.context)
         logger.warn(rsp.inspect)
         return rsp['msg']
 
