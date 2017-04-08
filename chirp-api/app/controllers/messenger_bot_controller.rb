@@ -12,13 +12,14 @@ class MessengerBotController < ActionController::Base
             user = "#{event['sender']['id']}"
             @current = do_user_auth(user, text, sender)
 
-            if text == "auth"
-                run_auth(text, sender, @current)
-            else
-                response = WitIntegration.incoming(@current, text)
-                sender.reply({ text: "#{response}" })
+            unless @current.nil?
+                if text == "auth"
+                    run_auth(text, sender, @current)
+                else
+                    response = WitIntegration.incoming(@current, text)
+                    sender.reply({ text: "#{response}" })
+                end
             end
-
         else
             sender.reply({ text: "The event text is nil. Reply: #{event['message']['text']}" })
         end
@@ -76,9 +77,12 @@ class MessengerBotController < ActionController::Base
         end
 
         s = AuthSession.find_by_uuid(c.uuid)
-        run_auth(msg, sender, c) if s.nil? || s.expires < DateTime.now
-
-        return c
+        if s.nil? || s.expires < DateTime.now
+            run_auth(msg, sender, c)
+            return nil
+        else
+            return c
+        end
 
     end
 
@@ -93,7 +97,5 @@ class MessengerBotController < ActionController::Base
         return nil if val.nil?
         return val.is_a?(Hash) ? val['value'] : val
     end
-
-
 
 end
