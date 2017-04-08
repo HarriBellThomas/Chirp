@@ -1,3 +1,8 @@
+require 'date'
+require 'json'
+require 'starling'
+require 'wit'
+
 class WitIntegration
 
     def self.incoming(current, msg)

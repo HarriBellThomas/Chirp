@@ -1,5 +1,6 @@
 require 'date'
 require 'starling'
+require 'json'
 require 'wit'
 
 class MessengerBotController < ActionController::Base
@@ -75,13 +76,13 @@ class MessengerBotController < ActionController::Base
         end
 
         s = AuthSession.find_by_uuid(c.uuid)
-        run_auth(msg) if s.nil? || s.expires < DateTime.now
+        run_auth(msg, sender) if s.nil? || s.expires < DateTime.now
 
         return c
 
     end
 
-    def run_auth(msg)
+    def run_auth(msg, sender)
         sender.reply({ text: "We're just going to verify it's you. Please click on the push notification." })
         send_test_push_notification(@current.uuid, msg)
     end
