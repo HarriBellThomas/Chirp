@@ -17,6 +17,16 @@ class ApiController < ApplicationController
         sender = Messenger::Bot::Transmitter.new(c.fbid)
         sender.reply({ text: "Thanks for authenticating! Let's see if we can answer your question." })
 
+        s = AuthSession.find_by_uuid(c.uuid)
+        if s.nil?
+            s = AuthSession.new
+            s.uuid = c.uuid
+        end
+
+        s.expires = DateTime.parse(Time.now + 10*60)
+        s.save
+
+
         response = WitIntegration.incoming(c, params["msg"])
         sender.reply({ text: "#{response}" })
 
