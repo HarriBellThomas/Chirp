@@ -16,8 +16,7 @@ class MessengerBotController < ActionController::Base
                 if text == "auth"
                     run_auth(text, sender, @current)
                 else
-                    response = WitIntegration.incoming(@current, text)
-                    sender.reply({ text: "#{response}" })
+                    response = WitIntegration.incoming(@current, text, sender)
                 end
             end
         else

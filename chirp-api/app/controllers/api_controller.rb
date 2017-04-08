@@ -35,8 +35,7 @@ class ApiController < ApplicationController
         s.save
 
 
-        response = WitIntegration.incoming(c, params["msg"])
-        sender.reply({ text: "#{response}" })
+        response = WitIntegration.incoming(c, params["msg"], sender)
 
         #puts sender.get_profile
         render :json => {:status => "success"}

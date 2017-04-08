@@ -5,11 +5,11 @@ require 'wit_integration'
 
 class WitIntegration
 
-    def self.incoming(current, msg)
+    def self.incoming(current, msg, sender)
 
         actions = {
             send: -> (request, response) {
-                puts("sending... #{response['text']}")
+                sender.reply({ text: "#{response['text']}" })
             },
             getBalance: -> (request) {
                 context = {}
