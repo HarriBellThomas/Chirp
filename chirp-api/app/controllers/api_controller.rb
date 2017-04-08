@@ -9,11 +9,9 @@ class ApiController < ApplicationController
         render :json => result
     end
 
-    def messenger_webhook
-        if params["hub.verify_token"] == "c671305a-0fd5-40a5-8859-03dbb9f76d05"
-            render :text => params["hub.challenge"]
-        else
-            render :text => "Wrong token"
-        end
+    def push_return
+        sender = Messenger::Bot::Transmitter.new(params["fbid"])
+        sender.reply({ text: "Hello, again!" })
+        puts sender.get_profile
     end
 end

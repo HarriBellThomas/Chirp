@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
     scope 'api' do
         #get 'messenger' => 'api#messenger_webhook'
-
+        post 'push_return' => 'api#push_return'
         get 'getbalance' => 'api#getbalance'
     end
 
     mount Messenger::Bot::Space => "/webhook"
-    
+
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'
 
