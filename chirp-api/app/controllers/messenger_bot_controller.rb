@@ -17,6 +17,7 @@ class MessengerBotController < ActionController::Base
         text = "#{event['message']['text']}"
         puts text
         sender.reply({ text: "Not nil!" })
+        sender.reply({ text: text })
         #     rsp = client.message("#{event['message']['text']}")
 
     else
