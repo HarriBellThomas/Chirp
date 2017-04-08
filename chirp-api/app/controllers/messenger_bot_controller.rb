@@ -20,7 +20,7 @@ class MessengerBotController < ActionController::Base
             if text == "auth"
                 puts event.inspect
                 sender.reply({ text: "We're just going to verify it's you. Please click on the push notification." })
-                send_test_push_notification("asdasd")
+                send_test_push_notification(event['sender']['id'])
 
             else
 
