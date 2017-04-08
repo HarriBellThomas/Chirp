@@ -5,10 +5,9 @@ class Starling
 	def self.balance(fbid)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
-		logger.warn('access_token in starling: '+access_token)
-		response = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/accounts/balance', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
-		logger.warn('balance response: '+response.inspect)
-		return response['availableToSpend']
+		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/accounts/balance', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
+                hash_rsp = JSON.parse(rsp.body)
+		return hash_rsp['availableToSpend']
 	end
 
 	def self.transfer(fbid, amount, contact_uuid)
@@ -20,8 +19,8 @@ class Starling
 	def self.check_contact(fbid, contact_name)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
-		response = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/contacts', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
-		contacts = JSON.parse(response.body)
+		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/contacts', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
+		contacts = JSON.parse(rsp.body)
 
 		id = nil
 		j['_embedded']['contacts'].each do |contact|
@@ -36,7 +35,7 @@ class Starling
 	def self.spending(fbid, simple_date)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
-		response = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/transactions?'+simple_date, headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
-		return response
+		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/transactions?'+simple_date, headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
+		return JSON.parse(rsp.body)
 	end
 end
