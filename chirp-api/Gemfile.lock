@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/jpoz/APNS.git
+  revision: 5b6590e4af43a08069c44280440bc1656b48eaa8
+  specs:
+    apns (1.1.0)
+
+GIT
   remote: git://github.com/jun85664396/messenger-bot-rails.git
   revision: 37a7c571ab7eb487c5dc1c39fd6d31001aac53ec
   specs:
@@ -156,6 +162,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apns!
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)

@@ -51,3 +51,4 @@ end
 
 gem 'messenger-bot', :git => 'git://github.com/jun85664396/messenger-bot-rails.git'
 gem 'wit'
+gem 'apns', :git => 'git://github.com/jpoz/APNS.git'
