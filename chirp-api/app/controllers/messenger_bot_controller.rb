@@ -15,13 +15,14 @@ class MessengerBotController < ActionController::Base
             unless @current.nil?
                 if text == "auth"
                     run_auth(text, sender, @current)
-                elsif test == "showall"
+                elsif text == "showchart"
                     sender.reply({"attachment":{
                         "type":"image",
                         "payload":{
                             "url":"http://chart.apis.google.com/chart?cht=lc&chs=320x180&chdl=Balance&chco=cc3399&chxt=x,y&chxr=0,,,0|1,0&chm=B,ff5050,0,0,0&chd=t"
                         }
                     }})
+                elsif text == "showbutton"
                     sender.reply({
                         "attachment":{
                           "type":"template",
