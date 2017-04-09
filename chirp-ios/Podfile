@@ -1,0 +1,5 @@
+target 'StarlingAuthenticate' do
+use_frameworks!
+pod 'SwiftyJSON'
+pod 'Alamofire'
+end

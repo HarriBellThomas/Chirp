@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F61C5E87BA71957CAD8B431 /* Pods_StarlingAuthenticate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4370331675D0B00E63547FBE /* Pods_StarlingAuthenticate.framework */; };
+		CE13B0481E98241000D0427E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13B0471E98241000D0427E /* AppDelegate.swift */; };
+		CE13B04A1E98241000D0427E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13B0491E98241000D0427E /* ViewController.swift */; };
+		CE13B04D1E98241000D0427E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE13B04B1E98241000D0427E /* Main.storyboard */; };
+		CE13B04F1E98241000D0427E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE13B04E1E98241000D0427E /* Assets.xcassets */; };
+		CE13B0521E98241000D0427E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE13B0501E98241000D0427E /* LaunchScreen.storyboard */; };
+		CE13B05D1E98241100D0427E /* StarlingAuthenticateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13B05C1E98241100D0427E /* StarlingAuthenticateTests.swift */; };
+		CE13B0681E98241100D0427E /* StarlingAuthenticateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13B0671E98241100D0427E /* StarlingAuthenticateUITests.swift */; };
+		CE13B0761E98257400D0427E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13B0751E98257400D0427E /* AuthViewController.swift */; };
+		CE33253A1E990D7500CEE1EF /* LoginSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3325391E990D7500CEE1EF /* LoginSettings.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE13B0591E98241100D0427E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE13B03C1E98241000D0427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE13B0431E98241000D0427E;
+			remoteInfo = StarlingAuthenticate;
+		};
+		CE13B0641E98241100D0427E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE13B03C1E98241000D0427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE13B0431E98241000D0427E;
+			remoteInfo = StarlingAuthenticate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34C1A902C3E58D9F87B1E437 /* Pods-StarlingAuthenticate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarlingAuthenticate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarlingAuthenticate/Pods-StarlingAuthenticate.debug.xcconfig"; sourceTree = "<group>"; };
+		4370331675D0B00E63547FBE /* Pods_StarlingAuthenticate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarlingAuthenticate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85A087E3C7369566A12A6622 /* Pods-StarlingAuthenticate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarlingAuthenticate.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarlingAuthenticate/Pods-StarlingAuthenticate.release.xcconfig"; sourceTree = "<group>"; };
+		CE13B0441E98241000D0427E /* StarlingAuthenticate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarlingAuthenticate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE13B0471E98241000D0427E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE13B0491E98241000D0427E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE13B04C1E98241000D0427E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE13B04E1E98241000D0427E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE13B0511E98241000D0427E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE13B0531E98241100D0427E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE13B0581E98241100D0427E /* StarlingAuthenticateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarlingAuthenticateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE13B05C1E98241100D0427E /* StarlingAuthenticateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarlingAuthenticateTests.swift; sourceTree = "<group>"; };
+		CE13B05E1E98241100D0427E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE13B0631E98241100D0427E /* StarlingAuthenticateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarlingAuthenticateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE13B0671E98241100D0427E /* StarlingAuthenticateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarlingAuthenticateUITests.swift; sourceTree = "<group>"; };
+		CE13B0691E98241100D0427E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE13B0751E98257400D0427E /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		CE3325381E985DF600CEE1EF /* StarlingAuthenticate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StarlingAuthenticate.entitlements; sourceTree = "<group>"; };
+		CE3325391E990D7500CEE1EF /* LoginSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSettings.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE13B0411E98241000D0427E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F61C5E87BA71957CAD8B431 /* Pods_StarlingAuthenticate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B0551E98241100D0427E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B0601E98241100D0427E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36DEFE7A8FDEF8F9AEFBC917 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4370331675D0B00E63547FBE /* Pods_StarlingAuthenticate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C37E05DD9B99F08ED25F6E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34C1A902C3E58D9F87B1E437 /* Pods-StarlingAuthenticate.debug.xcconfig */,
+				85A087E3C7369566A12A6622 /* Pods-StarlingAuthenticate.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE13B03B1E98241000D0427E = {
+			isa = PBXGroup;
+			children = (
+				CE13B0461E98241000D0427E /* StarlingAuthenticate */,
+				CE13B05B1E98241100D0427E /* StarlingAuthenticateTests */,
+				CE13B0661E98241100D0427E /* StarlingAuthenticateUITests */,
+				CE13B0451E98241000D0427E /* Products */,
+				8C37E05DD9B99F08ED25F6E5 /* Pods */,
+				36DEFE7A8FDEF8F9AEFBC917 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CE13B0451E98241000D0427E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE13B0441E98241000D0427E /* StarlingAuthenticate.app */,
+				CE13B0581E98241100D0427E /* StarlingAuthenticateTests.xctest */,
+				CE13B0631E98241100D0427E /* StarlingAuthenticateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE13B0461E98241000D0427E /* StarlingAuthenticate */ = {
+			isa = PBXGroup;
+			children = (
+				CE3325381E985DF600CEE1EF /* StarlingAuthenticate.entitlements */,
+				CE13B0471E98241000D0427E /* AppDelegate.swift */,
+				CE3325391E990D7500CEE1EF /* LoginSettings.swift */,
+				CE13B0491E98241000D0427E /* ViewController.swift */,
+				CE13B0751E98257400D0427E /* AuthViewController.swift */,
+				CE13B04B1E98241000D0427E /* Main.storyboard */,
+				CE13B04E1E98241000D0427E /* Assets.xcassets */,
+				CE13B0501E98241000D0427E /* LaunchScreen.storyboard */,
+				CE13B0531E98241100D0427E /* Info.plist */,
+			);
+			path = StarlingAuthenticate;
+			sourceTree = "<group>";
+		};
+		CE13B05B1E98241100D0427E /* StarlingAuthenticateTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE13B05C1E98241100D0427E /* StarlingAuthenticateTests.swift */,
+				CE13B05E1E98241100D0427E /* Info.plist */,
+			);
+			path = StarlingAuthenticateTests;
+			sourceTree = "<group>";
+		};
+		CE13B0661E98241100D0427E /* StarlingAuthenticateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE13B0671E98241100D0427E /* StarlingAuthenticateUITests.swift */,
+				CE13B0691E98241100D0427E /* Info.plist */,
+			);
+			path = StarlingAuthenticateUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE13B0431E98241000D0427E /* StarlingAuthenticate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE13B06C1E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticate" */;
+			buildPhases = (
+				A93BA0EB37775C905781F52C /* [CP] Check Pods Manifest.lock */,
+				CE13B0401E98241000D0427E /* Sources */,
+				CE13B0411E98241000D0427E /* Frameworks */,
+				CE13B0421E98241000D0427E /* Resources */,
+				76EF12E706868CE5005B7EA0 /* [CP] Embed Pods Frameworks */,
+				0C3456A8B7FEDC05739174C4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StarlingAuthenticate;
+			productName = StarlingAuthenticate;
+			productReference = CE13B0441E98241000D0427E /* StarlingAuthenticate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE13B0571E98241100D0427E /* StarlingAuthenticateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE13B06F1E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticateTests" */;
+			buildPhases = (
+				CE13B0541E98241100D0427E /* Sources */,
+				CE13B0551E98241100D0427E /* Frameworks */,
+				CE13B0561E98241100D0427E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE13B05A1E98241100D0427E /* PBXTargetDependency */,
+			);
+			name = StarlingAuthenticateTests;
+			productName = StarlingAuthenticateTests;
+			productReference = CE13B0581E98241100D0427E /* StarlingAuthenticateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE13B0621E98241100D0427E /* StarlingAuthenticateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE13B0721E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticateUITests" */;
+			buildPhases = (
+				CE13B05F1E98241100D0427E /* Sources */,
+				CE13B0601E98241100D0427E /* Frameworks */,
+				CE13B0611E98241100D0427E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE13B0651E98241100D0427E /* PBXTargetDependency */,
+			);
+			name = StarlingAuthenticateUITests;
+			productName = StarlingAuthenticateUITests;
+			productReference = CE13B0631E98241100D0427E /* StarlingAuthenticateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE13B03C1E98241000D0427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = carlospurves;
+				TargetAttributes = {
+					CE13B0431E98241000D0427E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = WFRPG3PPNM;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					CE13B0571E98241100D0427E = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CE13B0431E98241000D0427E;
+					};
+					CE13B0621E98241100D0427E = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CE13B0431E98241000D0427E;
+					};
+				};
+			};
+			buildConfigurationList = CE13B03F1E98241000D0427E /* Build configuration list for PBXProject "StarlingAuthenticate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE13B03B1E98241000D0427E;
+			productRefGroup = CE13B0451E98241000D0427E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE13B0431E98241000D0427E /* StarlingAuthenticate */,
+				CE13B0571E98241100D0427E /* StarlingAuthenticateTests */,
+				CE13B0621E98241100D0427E /* StarlingAuthenticateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE13B0421E98241000D0427E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE13B0521E98241000D0427E /* LaunchScreen.storyboard in Resources */,
+				CE13B04F1E98241000D0427E /* Assets.xcassets in Resources */,
+				CE13B04D1E98241000D0427E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B0561E98241100D0427E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B0611E98241100D0427E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C3456A8B7FEDC05739174C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarlingAuthenticate/Pods-StarlingAuthenticate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76EF12E706868CE5005B7EA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarlingAuthenticate/Pods-StarlingAuthenticate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A93BA0EB37775C905781F52C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE13B0401E98241000D0427E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE33253A1E990D7500CEE1EF /* LoginSettings.swift in Sources */,
+				CE13B04A1E98241000D0427E /* ViewController.swift in Sources */,
+				CE13B0761E98257400D0427E /* AuthViewController.swift in Sources */,
+				CE13B0481E98241000D0427E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B0541E98241100D0427E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE13B05D1E98241100D0427E /* StarlingAuthenticateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE13B05F1E98241100D0427E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE13B0681E98241100D0427E /* StarlingAuthenticateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE13B05A1E98241100D0427E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE13B0431E98241000D0427E /* StarlingAuthenticate */;
+			targetProxy = CE13B0591E98241100D0427E /* PBXContainerItemProxy */;
+		};
+		CE13B0651E98241100D0427E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE13B0431E98241000D0427E /* StarlingAuthenticate */;
+			targetProxy = CE13B0641E98241100D0427E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE13B04B1E98241000D0427E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE13B04C1E98241000D0427E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE13B0501E98241000D0427E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE13B0511E98241000D0427E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE13B06A1E98241100D0427E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE13B06B1E98241100D0427E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE13B06D1E98241100D0427E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34C1A902C3E58D9F87B1E437 /* Pods-StarlingAuthenticate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StarlingAuthenticate/StarlingAuthenticate.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WFRPG3PPNM;
+				INFOPLIST_FILE = StarlingAuthenticate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CE13B06E1E98241100D0427E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85A087E3C7369566A12A6622 /* Pods-StarlingAuthenticate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StarlingAuthenticate/StarlingAuthenticate.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WFRPG3PPNM;
+				INFOPLIST_FILE = StarlingAuthenticate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CE13B0701E98241100D0427E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = StarlingAuthenticateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarlingAuthenticate.app/StarlingAuthenticate";
+			};
+			name = Debug;
+		};
+		CE13B0711E98241100D0427E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = StarlingAuthenticateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarlingAuthenticate.app/StarlingAuthenticate";
+			};
+			name = Release;
+		};
+		CE13B0731E98241100D0427E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = StarlingAuthenticateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = StarlingAuthenticate;
+			};
+			name = Debug;
+		};
+		CE13B0741E98241100D0427E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = StarlingAuthenticateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlospurves.StarlingAuthenticateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = StarlingAuthenticate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE13B03F1E98241000D0427E /* Build configuration list for PBXProject "StarlingAuthenticate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE13B06A1E98241100D0427E /* Debug */,
+				CE13B06B1E98241100D0427E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE13B06C1E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE13B06D1E98241100D0427E /* Debug */,
+				CE13B06E1E98241100D0427E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE13B06F1E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE13B0701E98241100D0427E /* Debug */,
+				CE13B0711E98241100D0427E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE13B0721E98241100D0427E /* Build configuration list for PBXNativeTarget "StarlingAuthenticateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE13B0731E98241100D0427E /* Debug */,
+				CE13B0741E98241100D0427E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE13B03C1E98241000D0427E /* Project object */;
+}
