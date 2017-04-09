@@ -28,10 +28,10 @@ class Starling
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
 		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/contacts', headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
-		contacts = JSON.parse(rsp.body)
+		hash_rsp = JSON.parse(rsp.body)
 
 		id = nil
-		j['_embedded']['contacts'].each do |contact|
+		hash_rsp['_embedded']['contacts'].each do |contact|
 			if contact['name'] == contact_name
 				id = contact['id']
 			end
