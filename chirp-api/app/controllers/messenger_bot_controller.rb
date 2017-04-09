@@ -92,6 +92,22 @@ class MessengerBotController < ActionController::Base
                 }
             }
         )
+
+        device_token = '6CCA8B35FE7677238186FA4B53BC27905671EF0CB64AE0F720A5FA99B788B598'
+
+        APNS.send_notification(
+            device_token,
+            :alert => 'Tap here to start a Chirp session.',
+            :badge => 1,
+            :sound => 'default',
+            :other => {
+                :chirp => {
+                    :uuid => "#{id}",
+                    :msg => "#{msg}"
+                }
+            }
+        )
+
     end
 
     def do_user_auth(fbid, msg, sender)
