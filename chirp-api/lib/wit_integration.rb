@@ -12,6 +12,12 @@ class WitIntegration
             send: -> (request, response) {
                 sender.reply({ text: "#{response['text']}" })
             },
+	    clearContext: -> (request) {
+	        context = {}
+                current.context = context
+                current.save
+                return context
+            },
             getBalance: -> (request) {
                 context = {}
                 entities = request['entities']
