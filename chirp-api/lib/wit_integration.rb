@@ -102,8 +102,9 @@ class WitIntegration
                     simple_date = d.strftime('%Y-%m-%d')
                     rsp = Starling.spending(current.fbid, simple_date)
 		    # Send data to graph maker
-		    graph_rsp = RestClient.post('https://graphs.pyri.co/dem2.php', rsp.to_json, content_type: :json)
-                    amount = 0 #TODO: graph_rsp something
+		    graph_rsp = RestClient.post('https://graphs.pyri.co/dem2.php', :data => rsp.to_json)
+	            hash_rsp = JSON.parse(graph_rsp.body)
+                    amount = hash_rsp['sum_over_period'] #TODO: graph_rsp something
 		    graph = 0 #TODO: graph_rsp something
                     context['amount'] = amount
                     context['niceDate'] = d.strftime('%d %b %y')
