@@ -15,6 +15,34 @@ class MessengerBotController < ActionController::Base
             unless @current.nil?
                 if text == "auth"
                     run_auth(text, sender, @current)
+                elsif test == "showall"
+                    sender.reply({"attachment":{
+                        "type":"image",
+                        "payload":{
+                            "url":"http://chart.apis.google.com/chart?cht=lc&chs=320x180&chdl=Balance&chco=cc3399&chxt=x,y&chxr=0,,,0|1,0&chm=B,ff5050,0,0,0&chd=t"
+                        }
+                    }})
+                    sender.reply({
+                        "attachment":{
+                          "type":"template",
+                          "payload":{
+                            "template_type":"button",
+                            "text":"What do you want to do next?",
+                            "buttons":[
+                              {
+                                "type":"web_url",
+                                "url":"https://github.com/jun85664396/messenger-bot-rails",
+                                "title":"Show Website"
+                              },
+                              {
+                                "type":"postback",
+                                "title":"Start Chatting",
+                                "payload":"USER_DEFINED_PAYLOAD"
+                              }
+                            ]
+                          }
+                        }
+                      })
                 else
                     response = WitIntegration.incoming(@current, text, sender)
                 end
