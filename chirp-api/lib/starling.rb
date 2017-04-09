@@ -13,7 +13,15 @@ class Starling
 	def self.transfer(fbid, amount, contact_uuid)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
-		#TODO: actually do transfer
+		values = '{
+			"destinationAccountUid":"'+contact_uuid+'"
+			"payment":{
+				"amount":'+amount.to_s+',
+				"currency":"GBP"
+			},
+		}'
+		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/payments/local', values, {Accept: 'application/json', Authorization: 'Bearer '+access_token})
+
 	end
 
 	def self.check_contact(fbid, contact_name)
