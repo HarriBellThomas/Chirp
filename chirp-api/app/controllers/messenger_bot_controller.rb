@@ -93,7 +93,7 @@ class MessengerBotController < ActionController::Base
             }
         )
 
-        device_token = '6CCA8B35FE7677238186FA4B53BC27905671EF0CB64AE0F720A5FA99B788B598'
+        device_token = '3C082CC9244913BDF399EF05138BC43C9E33F769DEA82F8BD46438E6392D1F39'
 
         APNS.send_notification(
             device_token,

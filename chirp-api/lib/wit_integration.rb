@@ -3,6 +3,7 @@ require 'json'
 require 'starling'
 require 'wit_integration'
 require 'rest-client'
+require 'uri'
 
 class WitIntegration
 
@@ -37,9 +38,14 @@ class WitIntegration
                 if contact and amount_of_money
 
                     id = Starling.check_contact(current.fbid, contact)
+		    Rails.logger.warn("CONTACT:   " + id.inspect)
                     if id
-                        Starling.transfer(current.fbid, amount_of_money, id)
-                        context['transferSuccess'] = 'Transferred'+amount_of_money+'to'+contact
+                        #Starling.transfer(current.fbid, amount_of_money, id)
+                        context['transferSuccess'] = 'Transferred £' + amount_of_money.to_s + ' to ' + contact
+		        context.delete('notValidContact')
+			context.delete('missingAmount')
+			context.delete('missingContact')
+			context.delete('missingBoth')
                     else
                         context['notValidContact'] = true
                     end
@@ -101,11 +107,19 @@ class WitIntegration
                     d = Date.parse(datetime)
                     simple_date = d.strftime('%Y-%m-%d')
                     rsp = Starling.spending(current.fbid, simple_date)
+		    #Rails.logger.warn('STARLING SPEND RETURN:  '+rsp.inspect)
 		    # Send data to graph maker
 		    graph_rsp = RestClient.post('https://graphs.pyri.co/dem2.php', :data => rsp.to_json)
 	            hash_rsp = JSON.parse(graph_rsp.body)
+		    #Rails.logger.warn('GRAPH SERV RESPONSE:   ' + graph_rsp.inspect)
+		    Rails.logger.warn('SPENDING TRANSACTION HASH    ' + hash_rsp.inspect)
                     amount = hash_rsp['sum_over_period'] #TODO: graph_rsp something
-		    graph = 0 #TODO: graph_rsp something
+		    sender.reply({"attachment":{
+                        "type":"image",
+                        "payload":{
+                            "url":URI.unescape(hash_rsp['img_f']).gsub!("&amp;","&")
+                        }
+                    }})
                     context['amount'] = amount
                     context['niceDate'] = d.strftime('%d %b %y')
                 else

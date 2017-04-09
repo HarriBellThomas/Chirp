@@ -43,7 +43,7 @@ class Starling
 	def self.spending(fbid, simple_date)
 		u = Conversation.find_by(:fbid => fbid)
 		access_token = u.starling_access
-		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/transactions?from='+simple_date, headers={Accept: 'application/json', Authorization: 'Bearer '+access_token})
+		rsp = RestClient.get('https://api-sandbox.starlingbank.com/api/v1/transactions?from='+simple_date, headers={Authorization: 'Bearer '+access_token})
 		return JSON.parse(rsp.body)
 	end
 end
