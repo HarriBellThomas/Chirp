@@ -16,7 +16,6 @@ class WitIntegration
                 context = {}
                 entities = request['entities']
 
-    	        Rails.logger.warn('fbid in action: ' + current.fbid)
                 context['balance'] = Starling.balance(current.fbid)
                 current.context = context
                 current.save
@@ -27,7 +26,6 @@ class WitIntegration
                 entities = request['entities']
 
                 contact = WitIntegration.first_entity_value(entities, 'contact')
-		Rails.logger.warn('TRANSFER DEBUG (contact name): '+contact)
                 amount_of_money = WitIntegration.first_entity_value(entities, 'amount_of_money')
 
                 if contact and amount_of_money
@@ -35,34 +33,23 @@ class WitIntegration
                     id = Starling.check_contact(current.fbid, contact)
                     if id
                         Starling.transfer(current.fbid, amount_of_money, id)
-                        context['response'] = 'Transferred'+amount_of_money+'to'+contact
+                        context['transferSuccess'] = 'Transferred'+amount_of_money+'to'+contact
                     else
                         context['notValidContact'] = true
                     end
-                    #context.delete('missingContact')
-                    #context.delete('missingAmount')
-                    #context.delete('missingBoth')
                 elsif contact and amount_of_money.nil?
                     context['missingAmount'] = true
-                    #context.delete('response')
-                    #context.delete('missingContact')
-                    #context.delete('missingBoth')
                 elsif amount_of_money and contact.nil?
                     context['missingContact'] = true
-                    #context.delete('response')
-                    #context.delete('missingAmount')
-                    #context.delete('missingBoth')
                 else
                     context['missingBoth'] = true
-                    #context.delete('response')
-                    #context.delete('missingContact')
-                    #context.delete('missingAmount')
                 end
 
                 current.context = context
                 current.save
                 return context
             },
+=begin
             request: -> (request) {
                 context = request['context']
                 entities = request['entities']
@@ -97,6 +84,7 @@ class WitIntegration
                 current.save
                 return context
             },
+=end
             getSpending: -> (request) {
                 context = {}
                 entities = request['entities']
@@ -113,11 +101,8 @@ class WitIntegration
 		    graph = 0 #TODO: graph_rsp something
                     context['amount'] = amount
                     context['niceDate'] = d.strftime('%d %b %y')
-                    #context.delete('missingDatetime')
                 else
                     context['missingDatetime'] = true
-                    #context.delete('amount')
-                    #context.delete('niceDate')
                 end
 
                 current.context = context
